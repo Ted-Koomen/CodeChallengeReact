@@ -7,10 +7,6 @@ class JobForm extends Component {
 
   }
 
-  onSubmit() {
-
-  }
-
   render() {
     return (
       <div>
