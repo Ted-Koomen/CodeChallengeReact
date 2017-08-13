@@ -10,19 +10,21 @@ class JobForm extends Component {
   render() {
     return (
       <div>
-        <form>
-          <label>
-            Title:
-            <input type="text" name="title" />
-          </label>
-          <br />
-          <label>
-            Description:
-            <input type="textarea" name="description" />
-          </label>
-          <br />
-          <input type="submit" value="Submit" />
-        </form>
+        <div className="wrapper">
+          <h1 className="form-title"> Add a Job!</h1>
+          <form>
+            <label>
+              <input placeholder="Title" type="text" name="title" />
+            </label>
+            <br />
+            <label>
+              <input placeholder="Description" type="textarea" name="description" />
+            </label>
+            <br />
+              <input type="submit" className="btn btn-2g btn-2" value="Submit"/>
+            <br />
+          </form>
+        </div>
       </div>
     )
   }
