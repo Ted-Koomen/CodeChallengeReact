@@ -37,6 +37,7 @@ class JobsContainer extends Component {
     .catch((error) => {
       console.log(error)
     })
+
   }
 
 
@@ -69,7 +70,7 @@ class JobsContainer extends Component {
             <p className="form-title">Available Jobs</p>
             {this.state.jobs.map( job => {
               return (
-                <Job key={job.id} handleClick={this.handleClick} title={job.title} description={job.description}/>
+                <Job key={job.id} handleClick={this.handleClick} title={job.title} description={job.description} date={job.date_completed} urgent={job.urgent}/>
               )
             })}
             {this.renderJobEdit()}
