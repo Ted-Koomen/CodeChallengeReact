@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import axios from 'axios';
 import moment from 'moment';
 import DatePicker from 'react-datepicker'
@@ -29,23 +29,22 @@ class JobForm extends Component {
       description: this.refs.description.value,
       date: this.state.startDate,
       urgent: this.state.urgent
-    })
-    .then((response) => {
+    }).then((response) => {
       const titleForm = this.refs.title
       const descriptionForm = this.refs.description
       this.props.fetchJobs()
       titleForm.value = ""
       descriptionForm.value = ""
       console.log(response)
-    })
-    .catch((error) => {
-      console.log(error)
+    }).catch((error) => {
+      alert("There was an error. Please make sure all field")
+      console.log(error.data)
     })
   }
 
   handleTitleInput() {
-    this.setState(( prevState ) => {
-      title: this.refs.title.value
+    this.setState((prevState) => {
+      title : this.refs.title.value
     })
   }
 
@@ -57,53 +56,47 @@ class JobForm extends Component {
 
   toggleCalendar(e) {
     e && e.preventDefault()
-    this.setState({isOpen: !this.state.isOpen})
+    this.setState({
+      isOpen: !this.state.isOpen
+    })
   }
 
   handleCheckClick() {
-    if(!this.state.urgent){
+    if (!this.state.urgent) {
       return this.setState({urgent: true})
-    }
-    else{
-      return this.setState(prevState => {urgent:false})
+    } else {
+      return this.setState(prevState => {
+        urgent : false
+      })
     }
 
   }
-
 
   render() {
     return (
       <div>
         <div className="wrapper">
-          <h1 className="form-title"> Add a Job!</h1>
+          <h1 className="form-title">
+            Add a Job!</h1>
           <form onSubmit={this.handleSubmit}>
             <label>
               <input onChange={this.handleTitleInput} placeholder="Title" type="text" name="title" ref="title"/>
             </label>
-            <br />
+            <br/>
             <label>
               <input placeholder="Description" type="textarea" name="description" ref="description"/>
             </label>
-            <br />
-            <p>Select a Date:</p><button
-          className="example-custom-input"
-          onClick={this.toggleCalendar}>
-          {this.state.startDate.format("MM-DD-YYYY")}
-        </button><br/>
-        {
-      this.state.isOpen && (
-          <DatePicker
-              selected={this.state.startDate}
-              onChange={this.handleCalendarClick}
-              withPortal
-              inline />
-      )
-  }
-            <input onClick={this.handleCheckClick} type="checkbox" id="urgent" name="urgent"  ref="urgent"/>
+            <br/>
+            <p>Select a Date:</p>
+            <button className="example-custom-input" onClick={this.toggleCalendar}>
+              {this.state.startDate.format("MM-DD-YYYY")}
+            </button><br/> {this.state.isOpen && (<DatePicker selected={this.state.startDate} onChange={this.handleCalendarClick} withPortal inline/>)
+}
+            <input onClick={this.handleCheckClick} type="checkbox" id="urgent" name="urgent" ref="urgent"/>
             <label for="urgent">Is this job Urgent?</label>
-            <br />
-              <input type="submit" className="btn btn-2g btn-2" value="Submit"/>
-            <br />
+            <br/>
+            <input type="submit" className="btn btn-2g btn-2" value="Submit"/>
+            <br/>
           </form>
         </div>
       </div>

@@ -11,13 +11,13 @@ class Job extends Component {
     }
     this.renderEdit = this.renderEdit.bind(this);
     this.handleClick = this.handleClick.bind(this);
-
   }
 
   renderEdit() {
     if(this.state.showEdit === true){
       return(
-        <JobEditForm id={this.props.id} title={this.props.title} description={this.props.description} urgent={this.props.urgent}/>
+        <JobEditForm id={this.props.id} title={this.props.title} description={this.props.description} urgent={this.props.urgent}
+          handleClick={this.handleClick} fetchJobs={this.props.fetchJobs}/>
       )
 
     }
@@ -26,16 +26,18 @@ class Job extends Component {
     }
   }
 
+
   handleClick(){
+
     if(this.state.showEdit === false){
       return (this.setState({
         showEdit: true
       }))
     }
     else {
-      this.setState(( prevState ) => {
+      return(this.setState({
         showEdit: false
-      })
+      }))
     }
   }
 

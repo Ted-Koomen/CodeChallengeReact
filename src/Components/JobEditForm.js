@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import axios from 'axios';
 import moment from 'moment';
+import DatePicker from 'react-datepicker';
 
 class JobEditForm extends Component {
 
@@ -12,32 +13,56 @@ class JobEditForm extends Component {
       startDate: moment(),
       urgent: false
     }
-    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleCalendarClick = this.handleCalendarClick.bind(this);
+    this.toggleCalendar = this.toggleCalendar.bind(this)
   }
 
   handleSubmit(e) {
     e.preventDefault()
+    this.props.handleClick()
     axios.patch(`http://localhost:3000/jobs/${this.props.id}`, {
       title: this.refs.title.value || this.refs.title.placeholder,
       description: this.refs.description.value || this.refs.description.placeholder
 
+    }).then((response) => {
+      alert(response.data)
+      console.log(response)
+      this.props.fetchJobs()
+    }).catch((error) => {
+      alert("There was an error. Please make sure all fields are filled!")
     })
-    .then((response) => {
-
-    })
-    .catch((error) => {
-
-    })
-    debugger
   }
 
+  handleCalendarClick(date) {
+    this.setState({startDate: date})
+    this.toggleCalendar()
+
+  }
+
+  toggleCalendar(e) {
+    e && e.preventDefault()
+    this.setState({
+      isOpen: !this.state.isOpen
+    })
+  }
 
   render() {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          <input ref="title"type="text" name="title" placeholder={this.props.title ? this.props.title : "Title"}/><br/>
-          <input ref="description"type="text" name="description" placeholder={this.props.description ? this.props.description : "Description"}/><br/>
+          <input ref="title" type="text" name="title" placeholder={this.props.title
+            ? this.props.title
+            : "Title"}/><br/>
+          <input ref="description" type="text" name="description" placeholder={this.props.description
+            ? this.props.description
+            : "Description"}/><br/>
+          <p>Select a Date:</p>
+          <button className="example-custom-input" onClick={this.toggleCalendar}>
+            {this.state.startDate.format("MM-DD-YYYY")}
+          </button><br/> {this.state.isOpen && (<DatePicker selected={this.state.startDate} onChange={this.handleCalendarClick} withPortal inline/>)
+}
+
           <input type="checkbox" id="urgent" name="urgent" value="true"/>
           <label for="urgent">Is this job Urgent?</label>
           <br/>
