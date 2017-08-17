@@ -8,7 +8,7 @@ class JobEditForm extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      title: '',
+      title:'',
       description: '',
       startDate: moment(),
       urgent: false
