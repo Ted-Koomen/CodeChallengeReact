@@ -45,7 +45,7 @@ class JobsContainer extends Component {
         <div className="wrapper">
             {this.state.jobs.map( job => {
               return (
-                <Job key={job.id} title={job.title} description={job.description} date={job.date_completed} urgent={job.urgent}/>
+                <Job key={job.id} id={job.id}title={job.title} description={job.description} date={job.date_completed} urgent={job.urgent}/>
               )
             })}
         </div>

@@ -52,7 +52,7 @@ class JobForm extends Component {
   handleCalendarClick(date) {
     this.setState({startDate: date})
     this.toggleCalendar()
-    debugger
+
   }
 
   toggleCalendar(e) {

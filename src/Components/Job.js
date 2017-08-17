@@ -17,8 +17,9 @@ class Job extends Component {
   renderEdit() {
     if(this.state.showEdit === true){
       return(
-        <JobEditForm />
+        <JobEditForm id={this.props.id} title={this.props.title} description={this.props.description} urgent={this.props.urgent}/>
       )
+
     }
     else{
       return null
@@ -30,7 +31,6 @@ class Job extends Component {
       return (this.setState({
         showEdit: true
       }))
-      debugger
     }
     else {
       this.setState(( prevState ) => {
