@@ -52,9 +52,9 @@ input[type=text], select {
   color: #555555;
   cursor: pointer;
   font-weight: 600;
-  margin-left: 1.3rem;
+  /*margin-left: 1.3rem;*/
   outline: none;
-  padding: 1.3rem;
+  /*padding: 1.3rem;*/
   transition: background .2s ease, transform .2s ease;
 }
 
