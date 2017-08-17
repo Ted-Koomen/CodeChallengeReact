@@ -28,6 +28,7 @@ class JobsContainer extends Component {
   fetchJobs() {
     axios('http://localhost:3000/jobs')
     .then((response) => {
+      
       this.setState({
         jobs: response.data
       })
@@ -45,7 +46,8 @@ class JobsContainer extends Component {
         <div className="wrapper">
             {this.state.jobs.map( job => {
               return (
-                <Job key={job.id} id={job.id}title={job.title} description={job.description} date={job.date_completed} urgent={job.urgent} fetchJobs={this.fetchJobs}/>
+
+                <Job key={job.id} id={job.id}title={job.title} description={job.description} date={job.date_completed} urgent={job.urgent} phoneNumber={job.phone_number} fetchJobs={this.fetchJobs}/>
               )
             })}
         </div>

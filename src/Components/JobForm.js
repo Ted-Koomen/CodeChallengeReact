@@ -12,6 +12,7 @@ class JobForm extends Component {
       title: '',
       description: '',
       startDate: moment(),
+      contactNumber:'',
       urgent: false
     }
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -23,18 +24,20 @@ class JobForm extends Component {
 
   handleSubmit(e) {
     e.preventDefault()
-
     axios.post('http://localhost:3000/jobs', {
       title: this.refs.title.value,
       description: this.refs.description.value,
       date: this.state.startDate,
-      urgent: this.state.urgent
+      urgent: this.state.urgent,
+      phoneNumber: this.refs.phoneNumber.value
     }).then((response) => {
       const titleForm = this.refs.title
       const descriptionForm = this.refs.description
+      const phoneNumber = this.refs.phoneNumber
       this.props.fetchJobs()
       titleForm.value = ""
       descriptionForm.value = ""
+      phoneNumber.value = ""
       console.log(response)
     }).catch((error) => {
       alert("There was an error. Please make sure all fields are filled!")
@@ -87,6 +90,9 @@ class JobForm extends Component {
               <input placeholder="Description" type="textarea" name="description" ref="description"/>
             </label>
             <br/>
+            <label>
+              <input placeholder="Phone Number" type="text" name="number" ref="phoneNumber"/>
+            </label>
             <p>Select a Date:</p>
             <button className="example-custom-input" onClick={this.toggleCalendar}>
               {this.state.startDate.format("MM-DD-YYYY")}
