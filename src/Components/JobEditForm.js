@@ -24,8 +24,8 @@ class JobEditForm extends Component {
     axios.put(`http://localhost:3000/jobs/${this.props.id}`, {
       headers:{'crossDomain':true},
       title: this.refs.title.value || this.refs.title.placeholder,
-      description: this.refs.description.value || this.refs.description.placeholder
-
+      description: this.refs.description.value || this.refs.description.placeholder,
+      date_completed: this.state.startDate
     }).then((response) => {
       console.log(response)
       this.props.fetchJobs()

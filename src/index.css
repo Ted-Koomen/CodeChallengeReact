@@ -58,7 +58,7 @@ input[type=text], select {
 .button--round{
   border-radius: 50%;
   height: 4rem;
-  width: 4rem;
+  width: 10rem;
 }
 
 input[type=textarea] {
