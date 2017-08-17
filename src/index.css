@@ -64,6 +64,11 @@ input[type=text], select {
   width: 10rem;
 }
 
+.date{
+  width: 150px;
+  height: 25px;
+}
+
 input[type=textarea] {
     width: 50%;
     padding: 12px 20px;

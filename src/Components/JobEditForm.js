@@ -67,7 +67,7 @@ class JobEditForm extends Component {
             : "Description"}/><br/>
           <input ref="phoneNumber" type="text" name="phoneNumber" placeholder={this.props.phoneNumber ? this.props.phoneNumber : "Phone Number"}/>
           <p>Select a Date:</p>
-          <button className="example-custom-input" onClick={this.toggleCalendar}>
+          <button className="date" onClick={this.toggleCalendar}>
             {this.state.startDate.format("MM-DD-YYYY")}
           </button><br/> {this.state.isOpen && (<DatePicker selected={this.state.startDate} onChange={this.handleCalendarClick} withPortal inline/>)
 }
