@@ -9,7 +9,10 @@ input[type=text], select {
 }
 
 
-
+.job-edit {
+  padding-top: 12px;
+  padding-left: 450px;
+}
 /*.job__actions {
   flex-shrink: 0;
 }*/
@@ -95,12 +98,15 @@ input[type=textarea] {
 .job-title {
   font-weight: 300;
   font-size: 1.8rem;
+  text-align: center;
+  padding-left: 450px;
 }
 
 .job-attributes {
   font-size: 1.3rem;
   font-style: italic;
   font-weight: 300;
+  padding-left: 450px;
 }
 
 

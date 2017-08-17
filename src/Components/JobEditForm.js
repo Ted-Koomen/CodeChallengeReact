@@ -55,7 +55,7 @@ class JobEditForm extends Component {
 
   render() {
     return (
-      <div>
+      <div className="job-edit">
         <form onSubmit={this.handleSubmit}>
           <input ref="title" type="text" name="title" placeholder={this.props.title
             ? this.props.title
