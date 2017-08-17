@@ -27,7 +27,8 @@ class JobEditForm extends Component {
       title: this.refs.title.value || this.refs.title.placeholder,
       description: this.refs.description.value || this.refs.description.placeholder,
       date_completed: this.state.startDate,
-      urgent: this.state.urgent
+      urgent: this.state.urgent,
+      phoneNumber: this.refs.phoneNumber.value || this.refs.phoneNumber.placeholder
     }).then((response) => {
       console.log(response)
       this.props.fetchJobs()
@@ -64,8 +65,8 @@ class JobEditForm extends Component {
           <input ref="description" type="text" name="description" placeholder={this.props.description
             ? this.props.description
             : "Description"}/><br/>
+          <input ref="phoneNumber" type="text" name="phoneNumber" placeholder={this.props.phoneNumber ? this.props.phoneNumber : "Phone Number"}/>
           <p>Select a Date:</p>
-          // displaying calendar and creating button for calendar
           <button className="example-custom-input" onClick={this.toggleCalendar}>
             {this.state.startDate.format("MM-DD-YYYY")}
           </button><br/> {this.state.isOpen && (<DatePicker selected={this.state.startDate} onChange={this.handleCalendarClick} withPortal inline/>)

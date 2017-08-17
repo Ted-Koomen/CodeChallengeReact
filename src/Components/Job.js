@@ -19,7 +19,7 @@ class Job extends Component {
       return(
         // Render job edit form with props from specific job to autofill form
         <JobEditForm id={this.props.id} title={this.props.title} description={this.props.description} urgent={this.props.urgent}
-          handleClick={this.handleClick} fetchJobs={this.props.fetchJobs}/>
+          handleClick={this.handleClick} fetchJobs={this.props.fetchJobs} phoneNumber={this.props.phoneNumber}/>
       )
 
     }
@@ -52,7 +52,7 @@ class Job extends Component {
           <div className="job">
             <div>
               <h3 className="job-title">{this.props.title}</h3>
-              <p className="job-attributes">Description: {this.props.description} <br/>Urgency: {this.props.urgent ? "Urgent" : "Not Urgent"}<br/>{Date.format('dddd, MMMM Do YYYY')}</p>
+              <p className="job-attributes">Description: {this.props.description} <br/>Urgency: {this.props.urgent ? "Urgent" : "Not Urgent"}<br/>Phone Number:{this.props.phoneNumber}<br/>{Date.format('dddd, MMMM Do YYYY')}</p>
               {this.renderEdit()}
             </div>
             <div className="job-actions">
