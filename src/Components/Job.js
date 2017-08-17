@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import moment from 'moment'
 import JobEditForm from './JobEditForm';
+import DeleteButton from './DeleteButton';
 
 class Job extends Component {
 
@@ -56,6 +57,7 @@ class Job extends Component {
             <div className="job-actions">
               <button className={this.props.urgent ? "urgent-button button--round" : "button button--round"} onClick={this.handleClick}>Edit</button>
             </div>
+            <DeleteButton id={this.props.id} fetchJobs={this.props.fetchJobs}/>
           </div>
         </div>
 
