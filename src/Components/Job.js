@@ -1,33 +1,62 @@
 import React, { Component } from 'react';
 import moment from 'moment'
+import JobEditForm from './JobEditForm';
 
 class Job extends Component {
 
   constructor(props) {
     super(props)
     this.state = {
-      showEdit: "false"
+      showEdit: false
     }
+    this.renderEdit = this.renderEdit.bind(this);
+    this.handleClick = this.handleClick.bind(this);
 
   }
 
+  renderEdit() {
+    if(this.state.showEdit === true){
+      return(
+        <JobEditForm />
+      )
+    }
+    else{
+      return null
+    }
+  }
 
+  handleClick(){
+    if(this.state.showEdit === false){
+      return (this.setState({
+        showEdit: true
+      }))
+      debugger
+    }
+    else {
+      this.setState(( prevState ) => {
+        showEdit: false
+      })
+    }
+  }
 
   render() {
     const Date = moment(this.props.date)
 
     return (
-      <div>
-        <div className="wrapper">
-          <ul>
-            <ul>Title: {this.props.title}</ul>
-            <ul>Description: {this.props.description}</ul>
-            <ul>Date for Completion: {Date.format("dddd, MMMM Do YYYY")}</ul>
-            <ul>Urgency: {this.props.urgent ? "Urgent" : "Not Urgent"}</ul>
-            <button onClick={this.props.handleClick}>Edit</button>
-          </ul>
+
+        <div className="item">
+          <div className="job">
+            <div>
+              <h3 className="job-title">{this.props.title}</h3>
+              <p className="job-attributes">Description: {this.props.description} <br/>Urgency: {this.props.urgent ? "Urgent" : "Not Urgent"}<br/>{Date.format('dddd, MMMM Do YYYY')}</p>
+              {this.renderEdit()}
+            </div>
+            <div className="job-actions">
+              <button className="button button--round" onClick={this.handleClick}>Edit</button>
+            </div>
+          </div>
         </div>
-      </div>
+
 
     )
   }

@@ -14,8 +14,6 @@ class JobsContainer extends Component {
     }
 
     this.fetchJobs = this.fetchJobs.bind(this);
-    this.handleClick = this.handleClick.bind(this);
-    this.renderJobEdit = this.renderJobEdit.bind(this);
   }
 
   componentDidMount() {
@@ -40,40 +38,16 @@ class JobsContainer extends Component {
 
   }
 
-
-
-  handleClick(e) {
-    e.preventDefault()
-    if (this.state.showEdit === false) {
-      this.setState({showEdit: true})
-
-    }
-    else {
-      this.setState({showEdit: false})
-    }
-  }
-
-  renderJobEdit(props) {
-    if(this.state.showEdit) {
-      return(
-        <JobEditForm />
-      )
-    }
-  }
-
-
   render() {
 
     return(
       <div>
-        <div className="jobs-wrapper">
-            <p className="form-title">Available Jobs</p>
+        <div className="wrapper">
             {this.state.jobs.map( job => {
               return (
-                <Job key={job.id} handleClick={this.handleClick} title={job.title} description={job.description} date={job.date_completed} urgent={job.urgent}/>
+                <Job key={job.id} title={job.title} description={job.description} date={job.date_completed} urgent={job.urgent}/>
               )
             })}
-            {this.renderJobEdit()}
         </div>
         <JobForm fetchJobs={this.fetchJobs}/>
       </div>
