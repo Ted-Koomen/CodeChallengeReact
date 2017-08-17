@@ -8,6 +8,7 @@ class DeleteButton extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
+// function to handle click and submit job for delete
   handleClick() {
     axios({
       method: 'delete',

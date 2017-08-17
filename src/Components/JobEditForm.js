@@ -41,7 +41,7 @@ class JobEditForm extends Component {
     this.toggleCalendar()
 
   }
-
+// toggling calendar show
   toggleCalendar(e) {
     e && e.preventDefault()
     this.setState({
@@ -49,6 +49,7 @@ class JobEditForm extends Component {
     })
   }
 
+// handlle check box click
   handleCheckClick() {
     this.setState({urgent: true})
   }
@@ -64,6 +65,7 @@ class JobEditForm extends Component {
             ? this.props.description
             : "Description"}/><br/>
           <p>Select a Date:</p>
+          // displaying calendar and creating button for calendar
           <button className="example-custom-input" onClick={this.toggleCalendar}>
             {this.state.startDate.format("MM-DD-YYYY")}
           </button><br/> {this.state.isOpen && (<DatePicker selected={this.state.startDate} onChange={this.handleCalendarClick} withPortal inline/>)

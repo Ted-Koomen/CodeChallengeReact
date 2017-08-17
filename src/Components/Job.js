@@ -17,6 +17,7 @@ class Job extends Component {
   renderEdit() {
     if(this.state.showEdit === true){
       return(
+        // Render job edit form with props from specific job to autofill form
         <JobEditForm id={this.props.id} title={this.props.title} description={this.props.description} urgent={this.props.urgent}
           handleClick={this.handleClick} fetchJobs={this.props.fetchJobs}/>
       )
@@ -29,7 +30,7 @@ class Job extends Component {
 
 
   handleClick(){
-
+    // handle click to display and hide edit form
     if(this.state.showEdit === false){
       return (this.setState({
         showEdit: true
@@ -55,6 +56,7 @@ class Job extends Component {
               {this.renderEdit()}
             </div>
             <div className="job-actions">
+              // determine class name based on props.urgent, if true, use urgent styling, if false, normal button
               <button className={this.props.urgent ? "urgent-button button--round" : "button button--round"} onClick={this.handleClick}>Edit</button>
             </div>
             <DeleteButton id={this.props.id} fetchJobs={this.props.fetchJobs}/>
