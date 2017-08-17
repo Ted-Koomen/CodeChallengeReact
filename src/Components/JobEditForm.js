@@ -15,7 +15,8 @@ class JobEditForm extends Component {
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleCalendarClick = this.handleCalendarClick.bind(this);
-    this.toggleCalendar = this.toggleCalendar.bind(this)
+    this.toggleCalendar = this.toggleCalendar.bind(this);
+    this.handleCheckClick = this.handleCheckClick.bind(this);
   }
 
   handleSubmit(e) {
@@ -25,7 +26,8 @@ class JobEditForm extends Component {
       headers:{'crossDomain':true},
       title: this.refs.title.value || this.refs.title.placeholder,
       description: this.refs.description.value || this.refs.description.placeholder,
-      date_completed: this.state.startDate
+      date_completed: this.state.startDate,
+      urgent: this.state.urgent
     }).then((response) => {
       console.log(response)
       this.props.fetchJobs()
@@ -47,6 +49,10 @@ class JobEditForm extends Component {
     })
   }
 
+  handleCheckClick() {
+    this.setState({urgent: true})
+  }
+
   render() {
     return (
       <div>
@@ -63,7 +69,7 @@ class JobEditForm extends Component {
           </button><br/> {this.state.isOpen && (<DatePicker selected={this.state.startDate} onChange={this.handleCalendarClick} withPortal inline/>)
 }
 
-          <input type="checkbox" id="urgent" name="urgent" value="true"/>
+          <input onClick={this.handleCheckClick} type="checkbox" id="urgent" name="urgent" value="true"/>
           <label for="urgent">Is this job Urgent?</label>
           <br/>
           <input type="submit" className="btn btn-2g btn-2" value="Submit"/>
