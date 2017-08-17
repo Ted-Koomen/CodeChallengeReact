@@ -37,7 +37,7 @@ class JobForm extends Component {
       descriptionForm.value = ""
       console.log(response)
     }).catch((error) => {
-      alert("There was an error. Please make sure all field")
+      alert("There was an error. Please make sure all fields are filled!")
       console.log(error.data)
     })
   }

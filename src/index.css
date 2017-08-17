@@ -9,7 +9,10 @@ input[type=text], select {
 }
 
 
-
+.job-edit {
+  padding-top: 12px;
+  padding-left: 450px;
+}
 /*.job__actions {
   flex-shrink: 0;
 }*/
@@ -49,9 +52,9 @@ input[type=text], select {
   color: #555555;
   cursor: pointer;
   font-weight: 600;
-  margin-left: 1.3rem;
+  /*margin-left: 1.3rem;*/
   outline: none;
-  padding: 1.3rem;
+  /*padding: 1.3rem;*/
   transition: background .2s ease, transform .2s ease;
 }
 
@@ -95,12 +98,15 @@ input[type=textarea] {
 .job-title {
   font-weight: 300;
   font-size: 1.8rem;
+  text-align: center;
+  padding-left: 450px;
 }
 
 .job-attributes {
   font-size: 1.3rem;
   font-style: italic;
   font-weight: 300;
+  padding-left: 450px;
 }
 
 
