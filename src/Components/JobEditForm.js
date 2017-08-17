@@ -21,12 +21,12 @@ class JobEditForm extends Component {
   handleSubmit(e) {
     e.preventDefault()
     this.props.handleClick()
-    axios.patch(`http://localhost:3000/jobs/${this.props.id}`, {
+    axios.put(`http://localhost:3000/jobs/${this.props.id}`, {
+      headers:{'crossDomain':true},
       title: this.refs.title.value || this.refs.title.placeholder,
       description: this.refs.description.value || this.refs.description.placeholder
 
     }).then((response) => {
-      alert(response.data)
       console.log(response)
       this.props.fetchJobs()
     }).catch((error) => {

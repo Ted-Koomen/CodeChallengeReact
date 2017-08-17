@@ -46,7 +46,7 @@ class Job extends Component {
 
     return (
 
-        <div className="item">
+        <div className={this.props.urgent ? "urgent-item" : "item"}>
           <div className="job">
             <div>
               <h3 className="job-title">{this.props.title}</h3>
@@ -54,7 +54,7 @@ class Job extends Component {
               {this.renderEdit()}
             </div>
             <div className="job-actions">
-              <button className="button button--round" onClick={this.handleClick}>Edit</button>
+              <button className={this.props.urgent ? "urgent-button button--round" : "button button--round"} onClick={this.handleClick}>Edit</button>
             </div>
           </div>
         </div>
