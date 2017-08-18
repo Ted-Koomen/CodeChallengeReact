@@ -81,7 +81,7 @@ class JobForm extends Component {
         <div className="wrapper">
           <h1 className="form-title">
             Add a Job!</h1>
-          <form onSubmit={this.handleSubmit}>
+          <form className="new-job-form" onSubmit={this.handleSubmit}>
             <label>
               <input onChange={this.handleTitleInput} placeholder="Title" type="text" name="title" ref="title"/>
             </label>
