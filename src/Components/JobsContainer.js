@@ -5,6 +5,7 @@ import Job from './Job';
 import JobForm from './JobForm';
 import JobEditForm from './JobEditForm';
 
+
 class JobsContainer extends Component {
   constructor(props){
     super(props)
@@ -28,7 +29,7 @@ class JobsContainer extends Component {
   fetchJobs() {
     axios('http://localhost:3000/jobs')
     .then((response) => {
-      
+
       this.setState({
         jobs: response.data
       })
@@ -43,6 +44,7 @@ class JobsContainer extends Component {
 
     return(
       <div>
+        <h1 className="title-bar">Get Your Chores Done!</h1>
         <div className="wrapper">
             {this.state.jobs.map( job => {
               return (
@@ -52,6 +54,7 @@ class JobsContainer extends Component {
             })}
         </div>
         <JobForm fetchJobs={this.fetchJobs}/>
+
       </div>
     )
   }

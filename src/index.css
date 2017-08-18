@@ -9,6 +9,19 @@ input[type=text], select {
 }
 
 
+.new-job-form{
+  margin-top: 10px;
+}
+
+.title-bar {
+  background: #e55557;
+  color: white;
+  top: 0;
+  left: 0;
+  width: 100%;
+  margin-bottom: 25px;
+  text-align: center;
+}
 .job-edit {
   padding-top: 12px;
   padding-left: 450px;
@@ -105,6 +118,7 @@ input[type=textarea] {
   font-size: 1.8rem;
   text-align: center;
   padding-left: 450px;
+  padding-top: 10px;
 }
 
 .job-attributes {
